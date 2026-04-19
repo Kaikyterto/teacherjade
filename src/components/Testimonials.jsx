@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { testimonialTexts, testimonialVideos } from "../content/site";
 
 function toEmbedUrl(url) {
@@ -21,7 +22,33 @@ function toEmbedUrl(url) {
   return url;
 }
 
+function isInstagramUrl(url) {
+  return typeof url === "string" && url.includes("instagram.com/reel/");
+}
+
 export default function Testimonials() {
+  const [activeTextIndex, setActiveTextIndex] = useState(0);
+
+  useEffect(() => {
+    if (testimonialTexts.length <= 1) return undefined;
+
+    const intervalId = setInterval(() => {
+      setActiveTextIndex((current) => (current + 1) % testimonialTexts.length);
+    }, 4500);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  const goToNextText = () => {
+    setActiveTextIndex((current) => (current + 1) % testimonialTexts.length);
+  };
+
+  const goToPrevText = () => {
+    setActiveTextIndex((current) =>
+      current === 0 ? testimonialTexts.length - 1 : current - 1,
+    );
+  };
+
   return (
     <section
       id="testimonials"
@@ -63,7 +90,16 @@ export default function Testimonials() {
                   backgroundColor: "#fff",
                 }}
               >
-                <div className="aspect-video w-full">
+                <div
+                  className="w-full"
+                  style={{
+                    aspectRatio: isInstagramUrl(item.videoUrl)
+                      ? "9 / 16"
+                      : "16 / 9",
+                    maxWidth: isInstagramUrl(item.videoUrl) ? "380px" : "100%",
+                    margin: "0 auto",
+                  }}
+                >
                   <iframe
                     className="h-full w-full"
                     src={toEmbedUrl(item.videoUrl)}
@@ -97,41 +133,98 @@ export default function Testimonials() {
           >
             Feedback em texto
           </h3>
-          <div className="mt-6 grid gap-6 md:grid-cols-3">
-            {testimonialTexts.map((item) => (
-              <article
-                key={`${item.name}-${item.role}`}
-                className="rounded-2xl p-6"
-                style={{
-                  backgroundColor: "var(--brand-amber)",
-                  border: "1px solid #f1f5f9",
-                  boxShadow: "0 10px 24px rgba(0,0,0,0.04)",
-                }}
+          <div className="mt-6">
+            <div
+              className="relative overflow-hidden rounded-2xl"
+              style={{
+                border: "1px solid #f1f5f9",
+                boxShadow: "0 10px 24px rgba(0,0,0,0.04)",
+              }}
+            >
+              <div
+                className="flex transition-transform duration-500 ease-out"
+                style={{ transform: `translateX(-${activeTextIndex * 100}%)` }}
               >
-                <p
-                  className="text-lg leading-relaxed"
-                  style={{ color: "var(--brand-ink)" }}
+                {testimonialTexts.map((item) => (
+                  <article
+                    key={`${item.name}-${item.role}`}
+                    className="min-w-full p-6 md:p-8"
+                    style={{ backgroundColor: "var(--brand-amber)" }}
+                  >
+                    <p
+                      className="text-lg leading-relaxed md:text-xl"
+                      style={{ color: "var(--brand-ink)" }}
+                    >
+                      "{item.quote}"
+                    </p>
+                    <div
+                      className="mt-6 h-px w-full"
+                      style={{ backgroundColor: "#e5e7eb" }}
+                    />
+                    <p
+                      className="mt-4 text-base font-semibold"
+                      style={{ color: "var(--brand-primary)" }}
+                    >
+                      {item.name}
+                    </p>
+                    <p
+                      className="mt-1 text-sm"
+                      style={{ color: "var(--brand-ink)" }}
+                    >
+                      {item.role}
+                    </p>
+                  </article>
+                ))}
+              </div>
+            </div>
+
+            {testimonialTexts.length > 1 && (
+              <div className="mt-5 flex items-center justify-center gap-3">
+                <button
+                  type="button"
+                  onClick={goToPrevText}
+                  className="rounded-full px-4 py-2 text-sm font-semibold transition"
+                  style={{
+                    backgroundColor: "#fff",
+                    border: "1px solid #e5e7eb",
+                    color: "var(--brand-primary)",
+                  }}
                 >
-                  "{item.quote}"
-                </p>
-                <div
-                  className="mt-6 h-px w-full"
-                  style={{ backgroundColor: "#e5e7eb" }}
-                />
-                <p
-                  className="mt-4 text-base font-semibold"
-                  style={{ color: "var(--brand-primary)" }}
+                  Anterior
+                </button>
+
+                <div className="flex items-center gap-2">
+                  {testimonialTexts.map((item, index) => (
+                    <button
+                      key={`${item.name}-dot`}
+                      type="button"
+                      onClick={() => setActiveTextIndex(index)}
+                      aria-label={`Ir para depoimento ${index + 1}`}
+                      className="h-2.5 w-2.5 rounded-full"
+                      style={{
+                        backgroundColor:
+                          index === activeTextIndex
+                            ? "var(--brand-light-pink)"
+                            : "#d1d5db",
+                      }}
+                    />
+                  ))}
+                </div>
+
+                <button
+                  type="button"
+                  onClick={goToNextText}
+                  className="rounded-full px-4 py-2 text-sm font-semibold transition"
+                  style={{
+                    backgroundColor: "#fff",
+                    border: "1px solid #e5e7eb",
+                    color: "var(--brand-primary)",
+                  }}
                 >
-                  {item.name}
-                </p>
-                <p
-                  className="mt-1 text-sm"
-                  style={{ color: "var(--brand-ink)" }}
-                >
-                  {item.role}
-                </p>
-              </article>
-            ))}
+                  Proximo
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
