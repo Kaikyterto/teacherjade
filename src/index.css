@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --brand-wine: #881337;
-  --brand-wine-soft: #9f1239;
-  --brand-rose: #ffe4e6;
+  --brand-primary: #011139;
+  --brand-light-pink: #fb6376;
+  --brand-rose: #fca6c0;
   --brand-amber: #fff7ed;
   --brand-ink: #18181b;
 }
@@ -31,14 +31,14 @@ a {
 }
 
 .brand-title {
-  color: var(--brand-wine);
+  color: var(--brand-light-pink);
 }
 
 .btn-primary {
-  background-color: var(--brand-wine-soft);
+  background-color: var(--brand-rose);
   color: #fff;
 }
 
 .btn-primary:hover {
-  background-color: var(--brand-wine);
+  background-color: var(--brand-light-pink);
 }
