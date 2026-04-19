@@ -1,1 +1,44 @@
 @import "tailwindcss";
+
+:root {
+  --brand-wine: #881337;
+  --brand-wine-soft: #9f1239;
+  --brand-rose: #ffe4e6;
+  --brand-amber: #fff7ed;
+  --brand-ink: #18181b;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(
+    circle at 20% 0%,
+    #fff1f2 0%,
+    #fffdf8 38%,
+    #ffffff 100%
+  );
+  color: var(--brand-ink);
+  font-family: Poppins, "Nunito Sans", "Segoe UI", Tahoma, sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.brand-title {
+  color: var(--brand-wine);
+}
+
+.btn-primary {
+  background-color: var(--brand-wine-soft);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: var(--brand-wine);
+}
