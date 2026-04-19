@@ -16,9 +16,45 @@ export function getWhatsAppUrl(message = siteContent.defaultMessage) {
 export const navItems = [
   { label: "Home", href: "#hero" },
   { label: "Sobre", href: "#about" },
+  { label: "Depoimentos", href: "#testimonials" },
   { label: "Planos", href: "#card" },
   { label: "FAQ", href: "#faq" },
   { label: "Contato", href: "#footer" },
+];
+
+export const testimonialVideos = [
+  {
+    name: "Ana Clara",
+    goal: "Conversacao para viagens",
+    videoUrl:
+      "https://www.instagram.com/reel/DFEQuzHSFXD/?igsh=MTFmN24yOW11NHVxYQ==",
+  },
+  {
+    name: "Lucas Mendes",
+    goal: "Ingles para entrevistas",
+    videoUrl: "https://www.youtube.com/watch?v=09K79_bD6w0&pp=ygUEbG9maQ%3D%3D",
+  },
+];
+
+export const testimonialTexts = [
+  {
+    name: "Mariana Souza",
+    role: "Analista de Marketing",
+    quote:
+      "Em poucas semanas eu ja estava falando com mais seguranca. O foco pratico fez toda diferenca na minha rotina.",
+  },
+  {
+    name: "Rafael Costa",
+    role: "Desenvolvedor",
+    quote:
+      "Eu sempre travava para falar. Com as aulas, consegui evoluir na fluencia e participei da minha primeira reuniao em ingles sem medo.",
+  },
+  {
+    name: "Patricia Lima",
+    role: "Empreendedora",
+    quote:
+      "As aulas sao objetivas e personalizadas. Hoje consigo atender clientes internacionais com muito mais confianca.",
+  },
 ];
 
 export const plans = [
