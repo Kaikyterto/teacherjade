@@ -1,16 +1,26 @@
 export const siteContent = {
   brandName: "Teacher Jade",
   subtitle: "English Coaching",
-  email: "contato@teacherjade.com",
-  phoneDisplay: "(45) 99817-2267",
-  phoneDigits: "5545998172267",
-  defaultMessage: "Ola! Quero saber mais sobre as aulas.",
+  email: "jadelfernandes@yahoo.com.au",
+  instagram:
+    "https://www.instagram.com/jade_lfernandes?igsh=MXZxY241dTA0ZmlqYQ==",
+  phoneDisplay: "(19) 99160-6984",
+  phoneDigits: "5519991606984",
+
+  defaultMessage: "Olá! Vim pelo site e quero saber mais sobre as aulas.",
   primaryCtaLabel: "Comecar agora",
-  primaryCtaMessage: "Ola! Quero comecar as aulas.",
+  primaryCtaMessage: "Olá! Vim pelo site e quero começar as aulas.",
 };
 
-export function getWhatsAppUrl(message = siteContent.defaultMessage) {
-  return `https://wa.me/${siteContent.phoneDigits}?text=${encodeURIComponent(message)}`;
+export function getWhatsAppUrl(
+  message = siteContent.defaultMessage,
+  source = ""
+) {
+  const finalMessage = source ? `${message} (${source})` : message;
+
+  return `https://wa.me/${siteContent.phoneDigits}?text=${encodeURIComponent(
+    finalMessage
+  )}`;
 }
 
 export const navItems = [
@@ -23,23 +33,51 @@ export const navItems = [
 
 export const plans = [
   {
-    name: "Basico",
-    price: "R$ 300 / mes",
-    features: ["1 aula por semana", "Material base incluso"],
-    message: "Ola! Quero o plano Basico.",
+    name: "Grupo (4+ pessoas)",
+    price: "R$ 249,99 / mês",
+    features: ["4 aulas por mês", "Aulas em grupo", "Mais acessível"],
+    message:
+      "Olá! Vim pelo site e tenho interesse no plano em grupo (4 aulas).",
+    source: "Grupo 4 aulas",
   },
   {
-    name: "Intermediario",
-    price: "R$ 540 / mes",
-    features: ["2 aulas por semana", "Plano personalizado"],
-    message: "Ola! Quero o plano Intermediario.",
-    featured: true,
+    name: "Grupo (4+ pessoas)",
+    price: "R$ 349,99 / mês",
+    features: ["8 aulas por mês", "Aulas em grupo", "Maior frequência"],
+    message:
+      "Olá! Vim pelo site e tenho interesse no plano em grupo (8 aulas).",
+    source: "Grupo 8 aulas",
+  },
+
+  {
+    name: "Trio",
+    price: "R$ 279,99 / mês",
+    features: ["4 aulas por mês", "Turma reduzida", "Mais atenção"],
+    message: "Olá! Vim pelo site e tenho interesse no plano trio (4 aulas).",
+    source: "Trio 4 aulas",
   },
   {
-    name: "Premium",
-    price: "R$ 765 / mes",
-    features: ["3 aulas por semana", "Acompanhamento intensivo"],
-    message: "Ola! Quero o plano Premium.",
+    name: "Trio",
+    price: "R$ 379,99 / mês",
+    features: ["8 aulas por mês", "Turma reduzida", "Mais evolução"],
+    message: "Olá! Vim pelo site e tenho interesse no plano trio (8 aulas).",
+    source: "Trio 8 aulas",
+    featured: true, // 🔥 destaque aqui (melhor custo-benefício)
+  },
+
+  {
+    name: "VIP (Individual)",
+    price: "R$ 449,99 / mês",
+    features: ["4 aulas por mês", "Aulas individuais", "100% personalizado"],
+    message: "Olá! Vim pelo site e tenho interesse no plano VIP (4 aulas).",
+    source: "VIP 4 aulas",
+  },
+  {
+    name: "VIP (Individual)",
+    price: "R$ 649,99 / mês",
+    features: ["8 aulas por mês", "Aulas individuais", "Evolução acelerada"],
+    message: "Olá! Vim pelo site e tenho interesse no plano VIP (8 aulas).",
+    source: "VIP 8 aulas",
   },
 ];
 

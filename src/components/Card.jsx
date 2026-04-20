@@ -1,6 +1,120 @@
 import { getWhatsAppUrl, plans } from "../content/site";
 
 export default function Card() {
+  const planos4 = plans.filter((p) =>
+    p.features.some((f) => f.includes("4 aulas"))
+  );
+
+  const planos8 = plans.filter((p) =>
+    p.features.some((f) => f.includes("8 aulas"))
+  );
+
+  const renderCards = (lista) =>
+    lista.map((plan, index) => {
+      const isFeatured = plan.featured;
+
+      return (
+        <article
+          key={plan.name + index}
+          className="relative rounded-2xl p-8 transition duration-300"
+          style={{
+            backgroundColor: isFeatured ? "var(--brand-light-pink)" : "#fff",
+            border: isFeatured
+              ? "2px solid var(--brand-primary)"
+              : "1px solid #f1f5f9",
+            boxShadow: isFeatured
+              ? "0 0 25px rgba(251, 99, 118, 0.6), 0 20px 40px rgba(0,0,0,0.08)"
+              : "0 10px 30px rgba(0,0,0,0.05)",
+            transform: isFeatured ? "scale(1.05)" : "scale(1)",
+          }}
+        >
+          {isFeatured && (
+            <div
+              style={{
+                position: "absolute",
+                inset: "-12px",
+                borderRadius: "20px",
+                background:
+                  "radial-gradient(circle, rgba(251,99,118,0.4) 0%, rgba(251,99,118,0) 70%)",
+                filter: "blur(25px)",
+                zIndex: -1,
+              }}
+            />
+          )}
+
+          {/* BADGE */}
+          {isFeatured && (
+            <span
+              className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-sm font-semibold"
+              style={{
+                backgroundColor: "var(--brand-primary)",
+                color: "#fff",
+              }}
+            >
+              Mais escolhido
+            </span>
+          )}
+
+          {/* NOME */}
+          <h3
+            className="text-xl font-semibold"
+            style={{ color: "var(--brand-primary)" }}
+          >
+            {plan.name}
+          </h3>
+
+          {/* PREÇO */}
+          <p
+            className="mt-3 text-3xl font-bold"
+            style={{ color: "var(--brand-primary)" }}
+          >
+            {plan.price}
+          </p>
+
+          {/* FEATURES */}
+          <ul className="mt-6 space-y-3">
+            {plan.features.map((item) => (
+              <li
+                key={item}
+                className="flex items-start gap-3"
+                style={{ color: "var(--brand-ink)" }}
+              >
+                <span
+                  className="mt-2 h-2 w-2 rounded-full"
+                  style={{
+                    backgroundColor: "var(--brand-primary)",
+                  }}
+                />
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          {/* BOTÃO */}
+          <a
+            href={getWhatsAppUrl(plan.message, plan.source)}
+            className="mt-8 block rounded-full px-6 py-3 text-center font-semibold transition"
+            style={{
+              backgroundColor: isFeatured
+                ? "var(--brand-primary)"
+                : "var(--brand-light-pink)",
+              color: "#fff",
+            }}
+            onMouseOver={(e) =>
+              (e.currentTarget.style.backgroundColor = "var(--brand-primary)")
+            }
+            onMouseOut={(e) =>
+              (e.currentTarget.style.backgroundColor = isFeatured
+                ? "var(--brand-primary)"
+                : "var(--brand-light-pink)")
+            }
+          >
+            Escolher plano
+          </a>
+        </article>
+      );
+    });
+
   return (
     <section
       id="card"
@@ -20,115 +134,20 @@ export default function Card() {
           Planos flexiveis para seu ritmo.
         </p>
 
-        {/* CARDS */}
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {plans.map((plan) => {
-            const isFeatured = plan.featured;
+        <h3 className="mt-12 text-2xl font-semibold text-gray-700">
+          4 aulas por mês
+        </h3>
 
-            return (
-              <article
-                key={plan.name}
-                className="relative rounded-2xl p-8 transition duration-300"
-                style={{
-                  backgroundColor: isFeatured
-                    ? "var(--brand-light-pink)"
-                    : "#fff",
-                  border: isFeatured
-                    ? "2px solid var(--brand-primary)"
-                    : "1px solid #f1f5f9",
-                  boxShadow: isFeatured
-                    ? "0 0 25px rgba(251, 99, 118, 0.6), 0 20px 40px rgba(0,0,0,0.08)"
-                    : "0 10px 30px rgba(0,0,0,0.05)",
-                  transform: isFeatured ? "scale(1.05)" : "scale(1)",
-                }}
-              >
-                {isFeatured && (
-                  <div
-                    style={{
-                      position: "absolute",
-                      inset: "-12px",
-                      borderRadius: "20px",
-                      background:
-                        "radial-gradient(circle, rgba(251,99,118,0.4) 0%, rgba(251,99,118,0) 70%)",
-                      filter: "blur(25px)",
-                      zIndex: -1,
-                    }}
-                  />
-                )}
+        <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {renderCards(planos4)}
+        </div>
 
-                {/* BADGE */}
-                {isFeatured && (
-                  <span
-                    className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-sm font-semibold"
-                    style={{
-                      backgroundColor: "var(--brand-primary)",
-                      color: "#fff",
-                    }}
-                  >
-                    Mais escolhido
-                  </span>
-                )}
+        <h3 className="mt-16 text-2xl font-semibold text-gray-700">
+          8 aulas por mês
+        </h3>
 
-                {/* NOME */}
-                <h3
-                  className="text-xl font-semibold"
-                  style={{ color: "var(--brand-primary)" }}
-                >
-                  {plan.name}
-                </h3>
-
-                {/* PREÇO */}
-                <p
-                  className="mt-3 text-3xl font-bold"
-                  style={{ color: "var(--brand-primary)" }}
-                >
-                  {plan.price}
-                </p>
-
-                {/* FEATURES */}
-                <ul className="mt-6 space-y-3">
-                  {plan.features.map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-start gap-3"
-                      style={{ color: "var(--brand-ink)" }}
-                    >
-                      <span
-                        className="mt-2 h-2 w-2 rounded-full"
-                        style={{
-                          backgroundColor: "var(--brand-primary)",
-                        }}
-                      />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-
-                {/* BOTÃO */}
-                <a
-                  href={getWhatsAppUrl(plan.message)}
-                  className="mt-8 block rounded-full px-6 py-3 text-center font-semibold transition"
-                  style={{
-                    backgroundColor: isFeatured
-                      ? "var(--brand-primary)"
-                      : "var(--brand-light-pink)",
-                    color: "#fff",
-                  }}
-                  onMouseOver={(e) =>
-                    (e.currentTarget.style.backgroundColor =
-                      "var(--brand-primary)")
-                  }
-                  onMouseOut={(e) =>
-                    (e.currentTarget.style.backgroundColor = isFeatured
-                      ? "var(--brand-primary)"
-                      : "var(--brand-light-pink)")
-                  }
-                >
-                  Escolher plano
-                </a>
-              </article>
-            );
-          })}
+        <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {renderCards(planos8)}
         </div>
       </div>
     </section>
