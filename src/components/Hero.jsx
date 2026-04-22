@@ -1,8 +1,7 @@
-import Link from "./Link";
 import { getWhatsAppUrl } from "../content/site";
 
 export default function Hero() {
-  const scheduleLink = getWhatsAppUrl("Ola! Quero agendar uma conversa.");
+  const scheduleLink = getWhatsAppUrl("Olá! Quero agendar uma conversa.");
 
   return (
     <section

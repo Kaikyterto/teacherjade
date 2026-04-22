@@ -4,9 +4,9 @@ export const siteContent = {
   email: "contato@teacherjade.com",
   phoneDisplay: "(45) 99817-2267",
   phoneDigits: "5545998172267",
-  defaultMessage: "Ola! Quero saber mais sobre as aulas.",
-  primaryCtaLabel: "Comecar agora",
-  primaryCtaMessage: "Ola! Quero comecar as aulas.",
+  defaultMessage: "Olá! Quero saber mais sobre as aulas.",
+  primaryCtaLabel: "Começar agora",
+  primaryCtaMessage: "Olá! Quero começar as aulas.",
 };
 
 export function getWhatsAppUrl(message = siteContent.defaultMessage) {
@@ -25,14 +25,9 @@ export const navItems = [
 export const testimonialVideos = [
   {
     name: "Ana Clara",
-    goal: "Conversacao para viagens",
+    goal: "Conversação para viagens",
     videoUrl:
       "https://www.instagram.com/reel/DFEQuzHSFXD/?igsh=MTFmN24yOW11NHVxYQ==",
-  },
-  {
-    name: "Lucas Mendes",
-    goal: "Ingles para entrevistas",
-    videoUrl: "https://www.youtube.com/watch?v=09K79_bD6w0&pp=ygUEbG9maQ%3D%3D",
   },
 ];
 
@@ -41,58 +36,64 @@ export const testimonialTexts = [
     name: "Mariana Souza",
     role: "Analista de Marketing",
     quote:
-      "Em poucas semanas eu ja estava falando com mais seguranca. O foco pratico fez toda diferenca na minha rotina.",
+      "Em poucas semanas eu já estava falando com mais segurança. O foco prático fez toda a diferença na minha rotina.",
   },
   {
     name: "Rafael Costa",
     role: "Desenvolvedor",
     quote:
-      "Eu sempre travava para falar. Com as aulas, consegui evoluir na fluencia e participei da minha primeira reuniao em ingles sem medo.",
+      "Eu sempre travava para falar. Com as aulas, consegui evoluir na fluência e participei da minha primeira reunião em inglês sem medo.",
   },
   {
     name: "Patricia Lima",
     role: "Empreendedora",
     quote:
-      "As aulas sao objetivas e personalizadas. Hoje consigo atender clientes internacionais com muito mais confianca.",
+      "As aulas são objetivas e personalizadas. Hoje consigo atender clientes internacionais com muito mais confiança.",
   },
 ];
 
 export const plans = [
   {
-    name: "Basico",
-    price: "R$ 300 / mes",
-    features: ["1 aula por semana", "Material base incluso"],
-    message: "Ola! Quero o plano Basico.",
+    name: "Dupla",
+    packageOneClass: "12x de R$ 329,99",
+    packageTwoClasses: "12x de R$ 599,99",
+    message: "Olá! Quero saber mais sobre o plano Dupla.",
   },
   {
-    name: "Intermediario",
-    price: "R$ 540 / mes",
-    features: ["2 aulas por semana", "Plano personalizado"],
-    message: "Ola! Quero o plano Intermediario.",
+    name: "Trio",
+    packageOneClass: "12x de R$ 279,99",
+    packageTwoClasses: "12x de R$ 459,99",
+    message: "Olá! Quero saber mais sobre o plano Trio.",
     featured: true,
   },
   {
-    name: "Premium",
-    price: "R$ 765 / mes",
-    features: ["3 aulas por semana", "Acompanhamento intensivo"],
-    message: "Ola! Quero o plano Premium.",
+    name: "Grupo (4 ou mais)",
+    packageOneClass: "12x de R$ 249,99",
+    packageTwoClasses: "12x de R$ 419,99",
+    message: "Olá! Quero saber mais sobre o plano Grupo (4 ou mais).",
+  },
+  {
+    name: "VIP",
+    packageOneClass: "12x de R$ 449,99",
+    packageTwoClasses: "12x de R$ 799,99",
+    message: "Olá! Quero saber mais sobre o plano VIP.",
   },
 ];
 
 export const faqData = [
   {
-    question: "Preciso saber ingles para comecar?",
+    question: "Preciso saber inglês para começar?",
     answer:
-      "Nao. O curso atende desde iniciante ate avancado, sempre com conteudo adaptado.",
+      "Não. O curso atende desde iniciante até avançado, sempre com conteúdo adaptado.",
   },
   {
-    question: "Posso remarcar aula?",
+    question: "Posso remarcar a aula?",
     answer:
-      "Sim. Voce pode remarcar com antecedencia, respeitando a disponibilidade de agenda.",
+      "Sim. Você pode remarcar com antecedência, respeitando a disponibilidade de agenda.",
   },
   {
     question: "Quanto tempo para evoluir?",
     answer:
-      "Depende da sua rotina e consistencia. Com plano correto, os resultados aparecem rapido.",
+      "Depende da sua rotina e consistência. Com o plano correto, os resultados aparecem rápido.",
   },
 ];

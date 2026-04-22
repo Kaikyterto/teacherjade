@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Link from "./Link";
 import logo from "../assets/logo-jade.svg";
 import { getWhatsAppUrl, navItems, siteContent } from "../content/site";
 

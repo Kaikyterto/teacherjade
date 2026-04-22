@@ -28,6 +28,9 @@ function isInstagramUrl(url) {
 
 export default function Testimonials() {
   const [activeTextIndex, setActiveTextIndex] = useState(0);
+  const featuredInstagramVideo = testimonialVideos.find((item) =>
+    isInstagramUrl(item.videoUrl),
+  );
 
   useEffect(() => {
     if (testimonialTexts.length <= 1) return undefined;
@@ -67,43 +70,35 @@ export default function Testimonials() {
             className="mx-auto mt-4 max-w-2xl text-lg"
             style={{ color: "var(--brand-ink)" }}
           >
-            Resultados reais de quem ja evoluiu com metodo pratico e
-            acompanhamento proximo.
+            Resultados reais de quem já evoluiu com método prático e
+            acompanhamento próximo.
           </p>
         </div>
 
         <div className="mt-12">
-          <h3
-            className="text-2xl font-semibold"
-            style={{ color: "var(--brand-primary)" }}
-          >
-            Videos
-          </h3>
-          <div className="mt-6 grid gap-6 md:grid-cols-2">
-            {testimonialVideos.map((item) => (
+          {featuredInstagramVideo && (
+            <div className="mx-auto mt-6 w-full max-w-md">
               <article
-                key={`${item.name}-${item.videoUrl}`}
-                className="overflow-hidden rounded-2xl"
+                className="overflow-hidden rounded-3xl"
                 style={{
-                  border: "1px solid #f1f5f9",
-                  boxShadow: "0 10px 30px rgba(0,0,0,0.06)",
+                  border: "1px solid #fce7f3",
+                  boxShadow: "0 18px 45px rgba(251,99,118,0.18)",
                   backgroundColor: "#fff",
                 }}
               >
                 <div
-                  className="w-full"
+                  className="w-full overflow-hidden"
                   style={{
-                    aspectRatio: isInstagramUrl(item.videoUrl)
-                      ? "9 / 16"
-                      : "16 / 9",
-                    maxWidth: isInstagramUrl(item.videoUrl) ? "380px" : "100%",
+                    aspectRatio: "9 / 16",
+                    maxWidth: "420px",
                     margin: "0 auto",
+                    backgroundColor: "#111827",
                   }}
                 >
                   <iframe
                     className="h-full w-full"
-                    src={toEmbedUrl(item.videoUrl)}
-                    title={`Depoimento de ${item.name}`}
+                    src={toEmbedUrl(featuredInstagramVideo.videoUrl)}
+                    title={`Depoimento de ${featuredInstagramVideo.name}`}
                     loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerPolicy="strict-origin-when-cross-origin"
@@ -115,24 +110,18 @@ export default function Testimonials() {
                     className="text-lg font-semibold"
                     style={{ color: "var(--brand-primary)" }}
                   >
-                    {item.name}
+                    {featuredInstagramVideo.name}
                   </p>
                   <p className="mt-1" style={{ color: "var(--brand-ink)" }}>
-                    {item.goal}
+                    {featuredInstagramVideo.goal}
                   </p>
                 </div>
               </article>
-            ))}
-          </div>
+            </div>
+          )}
         </div>
 
         <div className="mt-14">
-          <h3
-            className="text-2xl font-semibold"
-            style={{ color: "var(--brand-primary)" }}
-          >
-            Feedback em texto
-          </h3>
           <div className="mt-6">
             <div
               className="relative overflow-hidden rounded-2xl"
@@ -221,7 +210,7 @@ export default function Testimonials() {
                     color: "var(--brand-primary)",
                   }}
                 >
-                  Proximo
+                  Próximo
                 </button>
               </div>
             )}

@@ -17,11 +17,11 @@ export default function Card() {
         </h2>
 
         <p className="mt-4 text-lg" style={{ color: "var(--brand-ink)" }}>
-          Planos flexiveis para seu ritmo.
+          Cada plano com valores para pacote anual de 1x ou 2x na semana.
         </p>
 
         {/* CARDS */}
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {plans.map((plan) => {
             const isFeatured = plan.featured;
 
@@ -77,32 +77,43 @@ export default function Card() {
                   {plan.name}
                 </h3>
 
-                {/* PREÇO */}
-                <p
-                  className="mt-3 text-3xl font-bold"
-                  style={{ color: "var(--brand-primary)" }}
-                >
-                  {plan.price}
-                </p>
-
-                {/* FEATURES */}
-                <ul className="mt-6 space-y-3">
-                  {plan.features.map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-start gap-3"
+                <div className="mt-6 space-y-4 text-left">
+                  <div
+                    className="rounded-xl px-4 py-3"
+                    style={{ backgroundColor: "rgba(255, 255, 255, 0.6)" }}
+                  >
+                    <p
+                      className="text-xs font-semibold uppercase tracking-wide"
                       style={{ color: "var(--brand-ink)" }}
                     >
-                      <span
-                        className="mt-2 h-2 w-2 rounded-full"
-                        style={{
-                          backgroundColor: "var(--brand-primary)",
-                        }}
-                      />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                      Pacote anual 40 aulas (1x na semana)
+                    </p>
+                    <p
+                      className="mt-1 text-2xl font-bold"
+                      style={{ color: "var(--brand-primary)" }}
+                    >
+                      {plan.packageOneClass}
+                    </p>
+                  </div>
+
+                  <div
+                    className="rounded-xl px-4 py-3"
+                    style={{ backgroundColor: "rgba(255, 255, 255, 0.6)" }}
+                  >
+                    <p
+                      className="text-xs font-semibold uppercase tracking-wide"
+                      style={{ color: "var(--brand-ink)" }}
+                    >
+                      Pacote anual 80 aulas (2x na semana)
+                    </p>
+                    <p
+                      className="mt-1 text-2xl font-bold"
+                      style={{ color: "var(--brand-primary)" }}
+                    >
+                      {plan.packageTwoClasses}
+                    </p>
+                  </div>
+                </div>
 
                 {/* BOTÃO */}
                 <a
