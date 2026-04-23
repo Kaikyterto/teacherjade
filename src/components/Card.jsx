@@ -1,13 +1,18 @@
 import { getWhatsAppUrl, plans } from "../content/site";
 
 export default function Card() {
-  const planos4 = plans.filter((p) =>
-    p.features.some((f) => f.includes("4 aulas"))
-  );
+  // separa planos de 1x por semana (packageOneClass) e 2x por semana (packageTwoClasses)
+  const planos1x = plans.map((p) => ({
+    ...p,
+    price: p.packageOneClass,
+    features: ["1x por semana"],
+  }));
 
-  const planos8 = plans.filter((p) =>
-    p.features.some((f) => f.includes("8 aulas"))
-  );
+  const planos2x = plans.map((p) => ({
+    ...p,
+    price: p.packageTwoClasses,
+    features: ["2x por semana"],
+  }));
 
   const renderCards = (lista) =>
     lista.map((plan, index) => {
@@ -28,21 +33,6 @@ export default function Card() {
             transform: isFeatured ? "scale(1.05)" : "scale(1)",
           }}
         >
-          {isFeatured && (
-            <div
-              style={{
-                position: "absolute",
-                inset: "-12px",
-                borderRadius: "20px",
-                background:
-                  "radial-gradient(circle, rgba(251,99,118,0.4) 0%, rgba(251,99,118,0) 70%)",
-                filter: "blur(25px)",
-                zIndex: -1,
-              }}
-            />
-          )}
-
-          {/* BADGE */}
           {isFeatured && (
             <span
               className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full px-4 py-1 text-sm font-semibold"
@@ -92,7 +82,7 @@ export default function Card() {
 
           {/* BOTÃO */}
           <a
-            href={getWhatsAppUrl(plan.message, plan.source)}
+            href={getWhatsAppUrl(plan.message)}
             className="mt-8 block rounded-full px-6 py-3 text-center font-semibold transition"
             style={{
               backgroundColor: isFeatured
@@ -122,7 +112,6 @@ export default function Card() {
       style={{ backgroundColor: "var(--brand-amber)" }}
     >
       <div className="mx-auto w-full max-w-6xl px-6 text-center">
-        {/* TÍTULO */}
         <h2
           className="text-3xl font-bold"
           style={{ color: "var(--brand-primary)" }}
@@ -134,20 +123,20 @@ export default function Card() {
           Cada plano com valores para pacote anual de 1x ou 2x na semana.
         </p>
 
-        {/* SEÇÃO 4 AULAS */}
+        {/* SEÇÃO 1x por semana */}
         <h3 className="mt-12 text-2xl font-semibold text-gray-700">
-          4 aulas por mês
+          1x por semana
         </h3>
         <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {renderCards(planos4)}
+          {renderCards(planos1x)}
         </div>
 
-        {/* SEÇÃO 8 AULAS */}
+        {/* SEÇÃO 2x por semana */}
         <h3 className="mt-16 text-2xl font-semibold text-gray-700">
-          8 aulas por mês
+          2x por semana
         </h3>
         <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {renderCards(planos8)}
+          {renderCards(planos2x)}
         </div>
       </div>
     </section>
