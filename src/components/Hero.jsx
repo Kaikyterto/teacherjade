@@ -1,8 +1,7 @@
-import Link from "./Link";
 import { getWhatsAppUrl } from "../content/site";
 
 export default function Hero() {
-  const scheduleLink = getWhatsAppUrl("Ola! Quero agendar uma conversa.");
+  const scheduleLink = getWhatsAppUrl("Olá! Quero agendar uma conversa.");
 
   return (
     <section
@@ -118,7 +117,7 @@ export default function Hero() {
                 style={{ color: "var(--brand-ink)" }}
               >
                 <span
-                  className="mt-1 h-2 w-2 rounded-full flex-shrink-0"
+                  className="mt-1 h-2 w-2 rounded-full shrink-0"
                   style={{ backgroundColor: "var(--brand-light-pink)" }}
                 />
                 {item}
