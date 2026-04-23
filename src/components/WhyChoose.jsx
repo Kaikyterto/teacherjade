@@ -1,41 +1,41 @@
 export default function WhyChoose() {
+  const goalTracks = [
+    {
+      title: "General English",
+      desc: "Para quem busca a fluência, mas sem um propósito específico.",
+    },
+    {
+      title: "Business English",
+      desc: "Para quem precisa se comunicar em situações de trabalho.",
+    },
+    {
+      title: "Travel English",
+      desc: "Para quem está de viagem marcada.",
+    },
+  ];
+
   return (
     <section className="py-20" style={{ backgroundColor: "#ffffff" }}>
       <div className="mx-auto w-full max-w-6xl px-6 text-center">
-        {/* TÍTULO */}
         <h2
           className="text-3xl font-bold"
           style={{ color: "var(--brand-primary)" }}
         >
-          Por que escolher este curso?
+          Material adaptado ao seu objetivo
         </h2>
 
         <p
           className="mx-auto mt-4 max-w-2xl text-lg"
           style={{ color: "var(--brand-ink)" }}
         >
-          Um processo claro para evoluir com consistencia, leveza e foco no que
-          realmente importa para sua fluencia.
+          Trilhas direcionadas para acelerar sua evolução no inglês de acordo
+          com o seu momento.
         </p>
 
-        {/* CARDS */}
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {[
-            {
-              title: "Foco em conversa",
-              desc: "Treino para situacoes reais desde o inicio, com repertorio util.",
-            },
-            {
-              title: "Material pratico",
-              desc: "Conteudo objetivo para vida pessoal, viagens e trabalho.",
-            },
-            {
-              title: "Resultados rapidos",
-              desc: "Metas semanais claras com revisoes constantes de desempenho.",
-            },
-          ].map((item, index) => (
+          {goalTracks.map((item) => (
             <article
-              key={index}
+              key={item.title}
               className="relative rounded-2xl p-8 transition duration-300"
               style={{
                 backgroundColor: "var(--brand-light-pink)",
@@ -54,7 +54,6 @@ export default function WhyChoose() {
                   "0 0 20px rgba(251,99,118,0.25), 0 10px 30px rgba(0,0,0,0.05)";
               }}
             >
-              {/* ✨ AURA SUAVE */}
               <div
                 style={{
                   position: "absolute",
@@ -78,7 +77,6 @@ export default function WhyChoose() {
                 {item.desc}
               </p>
 
-              {/* detalhe visual */}
               <div
                 className="mt-6 h-1 w-12 rounded-full"
                 style={{

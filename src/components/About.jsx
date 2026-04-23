@@ -35,17 +35,15 @@ export default function About() {
           </h2>
 
           <p className="mt-4 text-lg" style={{ color: "var(--brand-ink)" }}>
-            O objetivo e fazer voce falar ingles com seguranca em situacoes
-            reais. Cada aula e planejada para sua rotina e para os contextos em
-            que voce realmente usa o idioma.
+            A maior dificuldade em aprender um novo idioma é a fala. As minhas aulas focam em uma abordagem comunicativa, onde o principal objetivo é desenvolver sua comunicação real. 
           </p>
 
           <div className="mt-6 space-y-4">
             {[
               "Pratica guiada de fala em todas as aulas.",
-              "Vocabulario util para trabalho, viagens e dia a dia.",
-              "Feedback claro para acelerar sua evolucao.",
-              "Conteudo personalizado para o seu momento.",
+              "Vocabulário útil para compreender nativos.",
+              "Atividades adaptadas para seu desenvolvimento.",
+              "Materiais autênticos para te preparar para situações reais.",
             ].map((item, index) => (
               <div key={index} className="flex items-start gap-3">
                 <span

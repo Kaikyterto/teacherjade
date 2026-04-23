@@ -131,21 +131,21 @@ export default function Card() {
         </h2>
 
         <p className="mt-4 text-lg" style={{ color: "var(--brand-ink)" }}>
-          Planos flexiveis para seu ritmo.
+          Cada plano com valores para pacote anual de 1x ou 2x na semana.
         </p>
 
+        {/* SEÇÃO 4 AULAS */}
         <h3 className="mt-12 text-2xl font-semibold text-gray-700">
           4 aulas por mês
         </h3>
-
         <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {renderCards(planos4)}
         </div>
 
+        {/* SEÇÃO 8 AULAS */}
         <h3 className="mt-16 text-2xl font-semibold text-gray-700">
           8 aulas por mês
         </h3>
-
         <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {renderCards(planos8)}
         </div>
