@@ -11,7 +11,7 @@ export default function Footer() {
             {siteContent.brandName}
           </h3>
           <p className="mt-3 text-sm text-zinc-400">
-            Aprenda ingles com um metodo claro, pratico e focado em resultado
+            Aprenda inglês com um método claro, prático e focado em resultado
             real.
           </p>
         </div>
