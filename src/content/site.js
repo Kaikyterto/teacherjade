@@ -11,12 +11,12 @@ export const siteContent = {
 
 export function getWhatsAppUrl(
   message = siteContent.defaultMessage,
-  source = ""
+  source = "",
 ) {
   const finalMessage = source ? `${message} (${source})` : message;
 
   return `https://wa.me/${siteContent.phoneDigits}?text=${encodeURIComponent(
-    finalMessage
+    finalMessage,
   )}`;
 }
 
