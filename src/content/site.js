@@ -14,12 +14,12 @@ export const siteContent = {
 
 export function getWhatsAppUrl(
   message = siteContent.defaultMessage,
-  source = ""
+  source = "",
 ) {
   const finalMessage = source ? `${message} (${source})` : message;
 
   return `https://wa.me/${siteContent.phoneDigits}?text=${encodeURIComponent(
-    finalMessage
+    finalMessage,
   )}`;
 }
 
@@ -98,3 +98,56 @@ export const faqData = [
       "Depende da sua rotina e consistencia. Com plano correto, os resultados aparecem rapido.",
   },
 ];
+
+export const testimonialTexts = [
+  {
+    name: "Elvis",
+    role: "Aluno",
+    quote:
+      "Uma aula muito produtiva com uma excelente profissional, ajuda quem esta comecando com uma aula muito dinamica.",
+  },
+  {
+    name: "Marcio",
+    role: "Aluno",
+    quote:
+      "Jade e uma excelente professora, ela e paciente, uma pessoa atenciosa, sua explicacao e clara e eficiente.",
+  },
+  {
+    name: "Adriano",
+    role: "Aluno",
+    quote:
+      "Ela e muito paciente e da aula da melhor maneira para alcancar seu objetivo. Estou gostando muito.",
+  },
+  {
+    name: "Jacob",
+    role: "Aluno",
+    quote:
+      "A Jade esta sendo fundamental para mim, tem me ajudado bastante com meu ingles. Ela e muito atenciosa e com muita paciencia, super indico.",
+  },
+  {
+    name: "Bianca",
+    role: "Aluna",
+    quote:
+      "Estou amando as aulas com a Professora Jade. Ela e muito atenciosa e estimula muito no speaking, dando seguranca e muita atencao. Estamos evoluindo muito a cada aula.",
+  },
+  {
+    name: "Felipe",
+    role: "Aluno",
+    quote:
+      "Jade e uma otima professora, tem paciencia e respeita o tempo de cada aluno. Estou vendo evolucao e a cada aula damos um passo, step by step.",
+  },
+  {
+    name: "Vanessa",
+    role: "Mae de aluno",
+    quote:
+      "Ela foi muito paciente com meu filho, manteve a aula muito descontraida deixando ele tranquilo na aula. Obrigada.",
+  },
+  {
+    name: "Douglas",
+    role: "Aluno",
+    quote:
+      "Excelente professora, muito tranquilo de prosseguir a aula, estou adorando.",
+  },
+];
+
+export const testimonialVideos = [];
