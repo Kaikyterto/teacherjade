@@ -108,8 +108,8 @@ export default function Testimonials() {
               <div
                 className="relative overflow-hidden rounded-3xl"
                 style={{
-                  border: "1px solid #fce7f3",
-                  boxShadow: "0 18px 45px rgba(251,99,118,0.18)",
+                  border: "8px solid rgba(251,99,118,0.28)",
+                  boxShadow: "0 6px 16px rgba(17,24,39,0.08)",
                   backgroundColor: "#111827",
                   aspectRatio: "9 / 16",
                 }}
@@ -117,7 +117,7 @@ export default function Testimonials() {
                 {isDirectVideoUrl(directVideoSource) ? (
                   <video
                     ref={videoRef}
-                    className="h-full w-full"
+                    className="block h-full w-full object-cover"
                     controls
                     playsInline
                     preload="metadata"
