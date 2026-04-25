@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { testimonialTexts, testimonialVideos } from "../content/site";
 
 function toEmbedUrl(url) {
@@ -6,7 +6,7 @@ function toEmbedUrl(url) {
 
   if (url.includes("instagram.com/reel/")) {
     const cleanUrl = url.split("?")[0].replace(/\/$/, "");
-    return `${cleanUrl}/embed`;
+    return `${cleanUrl}/embed/?hidecaption=1`;
   }
 
   if (url.includes("youtube.com/watch")) {
@@ -22,15 +22,19 @@ function toEmbedUrl(url) {
   return url;
 }
 
-function isInstagramUrl(url) {
-  return typeof url === "string" && url.includes("instagram.com/reel/");
+function isDirectVideoUrl(url) {
+  return typeof url === "string" && /\.(mp4|webm|ogg)(\?|#|$)/i.test(url);
 }
 
 export default function Testimonials() {
   const [activeTextIndex, setActiveTextIndex] = useState(0);
-  const featuredInstagramVideo = testimonialVideos.find((item) =>
-    isInstagramUrl(item.videoUrl),
-  );
+  const videoRef = useRef(null);
+  const featuredVideo = testimonialVideos[0];
+  const directVideoSource = featuredVideo?.directVideoUrl;
+  const embedVideoSource = featuredVideo?.videoUrl;
+  const isInstagramEmbed =
+    typeof embedVideoSource === "string" &&
+    embedVideoSource.includes("instagram.com/");
 
   useEffect(() => {
     if (testimonialTexts.length <= 1) return undefined;
@@ -41,6 +45,29 @@ export default function Testimonials() {
 
     return () => clearInterval(intervalId);
   }, []);
+
+  useEffect(() => {
+    if (!isDirectVideoUrl(directVideoSource) || !videoRef.current) {
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!videoRef.current) return;
+
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.65) {
+            videoRef.current.play().catch(() => {});
+          }
+        });
+      },
+      { threshold: [0.25, 0.65, 0.9] },
+    );
+
+    observer.observe(videoRef.current);
+
+    return () => observer.disconnect();
+  }, [directVideoSource]);
 
   const goToNextText = () => {
     setActiveTextIndex((current) => (current + 1) % testimonialTexts.length);
@@ -76,47 +103,99 @@ export default function Testimonials() {
         </div>
 
         <div className="mt-12">
-          {featuredInstagramVideo && (
-            <div className="mx-auto mt-6 w-full max-w-md">
-              <article
-                className="overflow-hidden rounded-3xl"
+          {featuredVideo && (
+            <div className="mx-auto mt-6 w-full max-w-105">
+              <div
+                className="relative overflow-hidden rounded-3xl"
                 style={{
                   border: "1px solid #fce7f3",
                   boxShadow: "0 18px 45px rgba(251,99,118,0.18)",
-                  backgroundColor: "#fff",
+                  backgroundColor: "#111827",
+                  aspectRatio: "9 / 16",
                 }}
               >
-                <div
-                  className="w-full overflow-hidden"
-                  style={{
-                    aspectRatio: "9 / 16",
-                    maxWidth: "420px",
-                    margin: "0 auto",
-                    backgroundColor: "#111827",
-                  }}
-                >
-                  <iframe
+                {isDirectVideoUrl(directVideoSource) ? (
+                  <video
+                    ref={videoRef}
                     className="h-full w-full"
-                    src={toEmbedUrl(featuredInstagramVideo.videoUrl)}
-                    title={`Depoimento de ${featuredInstagramVideo.name}`}
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                  />
-                </div>
-                <div className="p-5">
-                  <p
-                    className="text-lg font-semibold"
-                    style={{ color: "var(--brand-primary)" }}
+                    controls
+                    playsInline
+                    preload="metadata"
+                    muted
+                    onMouseEnter={() => {
+                      videoRef.current?.play().catch(() => {});
+                    }}
                   >
-                    {featuredInstagramVideo.name}
-                  </p>
-                  <p className="mt-1" style={{ color: "var(--brand-ink)" }}>
-                    {featuredInstagramVideo.goal}
-                  </p>
-                </div>
-              </article>
+                    <source src={directVideoSource} type="video/mp4" />
+                    Seu navegador não suporta reprodução de vídeo.
+                  </video>
+                ) : (
+                  <>
+                    <iframe
+                      className="w-full"
+                      src={toEmbedUrl(embedVideoSource)}
+                      title={`Depoimento de ${featuredVideo.name}`}
+                      loading="lazy"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      allowFullScreen
+                      style={
+                        isInstagramEmbed
+                          ? {
+                              border: 0,
+                              position: "absolute",
+                              left: "50%",
+                              top: "50%",
+                              width: "118%",
+                              height: "118%",
+                              transform: "translate(-50%, -50%)",
+                            }
+                          : {
+                              border: 0,
+                              height: "100%",
+                            }
+                      }
+                    />
+                    {isInstagramEmbed && (
+                      <>
+                        <div
+                          aria-hidden="true"
+                          style={{
+                            position: "absolute",
+                            insetInline: 0,
+                            top: 0,
+                            height: "20px",
+                            backgroundColor: "#111827",
+                            pointerEvents: "none",
+                          }}
+                        />
+                        <div
+                          aria-hidden="true"
+                          style={{
+                            position: "absolute",
+                            insetInline: 0,
+                            bottom: 0,
+                            height: "74px",
+                            backgroundColor: "#111827",
+                            pointerEvents: "none",
+                          }}
+                        />
+                      </>
+                    )}
+                  </>
+                )}
+              </div>
+              <div className="p-5">
+                <p
+                  className="text-lg font-semibold"
+                  style={{ color: "var(--brand-primary)" }}
+                >
+                  {featuredVideo.name}
+                </p>
+                <p className="mt-1" style={{ color: "var(--brand-ink)" }}>
+                  {featuredVideo.goal}
+                </p>
+              </div>
             </div>
           )}
         </div>

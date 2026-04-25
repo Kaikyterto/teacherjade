@@ -1,3 +1,5 @@
+import testimonialDouglasMp4 from "../assets/videos/testimonial-douglas.mp4";
+
 export const siteContent = {
   brandName: "Teacher Jade",
   subtitle: "English Coaching",
@@ -31,8 +33,9 @@ export const navItems = [
 
 export const testimonialVideos = [
   {
-    name: "Ana Clara",
-    goal: "Conversação para viagens",
+    name: "Douglas",
+    goal: "Aluno",
+    directVideoUrl: testimonialDouglasMp4,
     videoUrl:
       "https://www.instagram.com/reel/DFEQuzHSFXD/?igsh=MTFmN24yOW11NHVxYQ==",
   },
