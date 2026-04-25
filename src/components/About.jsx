@@ -1,4 +1,5 @@
 import aboutPhoto from "../assets/about-photo-placeholder.svg";
+import teacherPhoto from "../assets/teacher-photo.jpeg";
 
 export default function About() {
   return (
@@ -19,9 +20,9 @@ export default function About() {
           }}
         >
           <img
-            src={aboutPhoto}
+            src={teacherPhoto}
             alt="Ilustracao da professora"
-            className="h-80 w-full object-cover"
+            className="h-100 w-full object-cover"
           />
         </div>
 
@@ -31,11 +32,17 @@ export default function About() {
             className="text-3xl font-bold"
             style={{ color: "var(--brand-primary)" }}
           >
-            Sobre o curso
+            Your teacher
           </h2>
 
           <p className="mt-4 text-lg" style={{ color: "var(--brand-ink)" }}>
-            A maior dificuldade em aprender um novo idioma é a fala. As minhas aulas focam em uma abordagem comunicativa, onde o principal objetivo é desenvolver sua comunicação real. 
+            Aprendi inglês sozinha e desde 2017 atuo como professora, começando
+            em uma escola online no Vietnã. Sou formada em Letras, tenho
+            certificado TEFL e já ensinei crianças e adultos de diferentes
+            nacionalidades. Após 7 anos como freelancer, investi em cursos e
+            materiais para abrir meu próprio negócio de ensino de inglês e hoje
+            tenho mais de 10 anos de experiência dando aulas de inglês online.
+            Nas minhas aulas você encontra:
           </p>
 
           <div className="mt-6 space-y-4">

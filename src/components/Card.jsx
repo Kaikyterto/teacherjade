@@ -127,7 +127,7 @@ export default function Card() {
         <h3 className="mt-12 text-2xl font-semibold text-gray-700">
           1x por semana
         </h3>
-        <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {renderCards(planos1x)}
         </div>
 
@@ -135,7 +135,7 @@ export default function Card() {
         <h3 className="mt-16 text-2xl font-semibold text-gray-700">
           2x por semana
         </h3>
-        <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {renderCards(planos2x)}
         </div>
       </div>
