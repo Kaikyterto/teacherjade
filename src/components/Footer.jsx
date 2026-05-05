@@ -19,7 +19,6 @@ export default function Footer() {
         <div>
           <h4 className="font-semibold text-white">Contato</h4>
           <p className="mt-2 text-sm">WhatsApp: {siteContent.phoneDisplay}</p>
-          <p className="text-sm">Email: {siteContent.email}</p>
         </div>
       </div>
 

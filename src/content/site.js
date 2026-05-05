@@ -13,12 +13,12 @@ export const siteContent = {
 
 export function getWhatsAppUrl(
   message = siteContent.defaultMessage,
-  source = "",
+  source = ""
 ) {
   const finalMessage = source ? `${message} (${source})` : message;
 
   return `https://wa.me/${siteContent.phoneDigits}?text=${encodeURIComponent(
-    finalMessage,
+    finalMessage
   )}`;
 }
 
@@ -71,19 +71,52 @@ export const plans = [
 
 export const faqData = [
   {
-    question: "Preciso saber inglês para começar?",
+    question: "Eu não sei nada de inglês, vou conseguir acompanhar a turma?",
     answer:
-      "Não. O curso atende desde iniciante até avançado, sempre com conteúdo adaptado.",
+      "Sim, as turmas beginner começam do zero, eu ensino desde cumprimentos, letras e números.",
   },
   {
     question: "Posso remarcar a aula?",
     answer:
-      "Sim. Você pode remarcar com antecedência, respeitando a disponibilidade de agenda.",
+      "Sim. Aula individual pode remarcar com pelo menos 24h de antecedência, aulas em grupo o aluno recebe a gravação da aula em caso de falta",
   },
   {
-    question: "Quanto tempo para evoluir?",
+    question: "Quanto tempo pra eu ficar fluente?",
     answer:
-      "Depende da sua rotina e consistência. Com o plano correto, os resultados aparecem rápido.",
+      "Depende da sua dedicação. Tirando tempo todos os dias para estudar você vai perceber uma avanço bem rápido.",
+  },
+  {
+    question: "Qual a duração das aulas?",
+    answer: "As aulas tem duração de 1 hora.",
+  },
+  {
+    question: "Tem material?",
+    answer:
+      "Sim, eu disponibilizo um material online interativo sem custo adicional.",
+  },
+  {
+    question: "Individual é melhor do que em grupo?",
+    answer:
+      "Depende. Se você tem uma necessidade muito específica o Individual vai ser uma vantagem por ser 100% personalizado para a sua necessidade. Mas se o seu intuito for destravar a comunicação, eu tenho observado resultados melhores nas aulas em grupo, por conta da interação e do incentivo dos colegas.",
+  },
+  {
+    question: "Como funciona o pagamento?",
+    answer:
+      "Após a assinatura do contrato o pagamento é feito de forma mensal, via Pix, na data da sua preferência.",
+  },
+  {
+    question: "Tem certificado?",
+    answer:
+      "Sim, emitimos certificado com validade em todo o território nacional.",
+  },
+  {
+    question: "Emite nota fiscal?",
+    answer: "Sim, emitimos nota fiscal caso seja necessário. ",
+  },
+  {
+    question: "1 vez por semana não é muito pouco?",
+    answer:
+      "Meus alunos no geral tem pouco tempo para estudar, e eles tem tido resultados muito satisfatórios fazendo apenas uma aula por semana, como o caso do Douglas, que conseguiu destravar a fala em poucos meses, mesmo fazendo aula apenas 1 vez por semana, e sem estudar nada por fora.",
   },
 ];
 

@@ -89,41 +89,65 @@ export default function Hero() {
         </div>
 
         {/* CARD */}
-        <div
-          className="relative z-10 rounded-3xl p-8 shadow-xl"
-          style={{
-            backgroundColor: "rgba(255, 255, 255, 0.9)", // Leve transparência para o vidro
-            backdropFilter: "blur(10px)",
-            border: "1px solid #f3f4f6",
-          }}
-        >
-          <h2
-            className="text-xl font-bold"
-            style={{ color: "var(--brand-primary)" }}
-          >
-            Método direto ao ponto
-          </h2>
 
-          <ul className="mt-6 space-y-4">
-            {[
-              "1 aula de diagnóstico e trilha personalizada.",
-              "Prática de fala desde a primeira semana.",
-              "Material adaptado ao seu objetivo real.",
-              "Correção com foco em fluidez e confiança.",
-            ].map((item, index) => (
-              <li
-                key={index}
-                className="flex items-start gap-3"
-                style={{ color: "var(--brand-ink)" }}
-              >
-                <span
-                  className="mt-1 h-2 w-2 rounded-full shrink-0"
-                  style={{ backgroundColor: "var(--brand-light-pink)" }}
-                />
-                {item}
-              </li>
-            ))}
-          </ul>
+        <div className="flex flex-col ">
+          <div
+            className="z-20 rounded-3xl p-8 shadow-xl mb-3 space-y-4"
+            style={{
+              backgroundColor: "rgba(255, 255, 255, 0.9)", // Leve transparência para o vidro
+              backdropFilter: "blur(10px)",
+              border: "2px solid var(--brand-light-pink)",
+            }}
+          >
+            <h1
+              className="text-xl font-extrabold p-auto"
+              style={{
+                color: "var(--brand-primary)",
+              }}
+            >
+              Vagas abertas
+            </h1>
+            <p>
+              Turma beginner: aprenda inglês do zero Início dia 21 de maio 3
+              vagas disponíveis Aulas às quintas-feiras às 19h
+            </p>
+          </div>
+          <div
+            className="relative z-10 rounded-3xl p-8 shadow-xl"
+            style={{
+              backgroundColor: "rgba(255, 255, 255, 0.9)", // Leve transparência para o vidro
+              backdropFilter: "blur(10px)",
+              border: "1px solid #f3f4f6",
+            }}
+          >
+            <h2
+              className="text-xl font-bold"
+              style={{ color: "var(--brand-primary)" }}
+            >
+              Método direto ao ponto
+            </h2>
+
+            <ul className="mt-6 space-y-4">
+              {[
+                "1 aula de diagnóstico e trilha personalizada.",
+                "Prática de fala desde a primeira semana.",
+                "Material adaptado ao seu objetivo real.",
+                "Correção com foco em fluidez e confiança.",
+              ].map((item, index) => (
+                <li
+                  key={index}
+                  className="flex items-start gap-3"
+                  style={{ color: "var(--brand-ink)" }}
+                >
+                  <span
+                    className="mt-1 h-2 w-2 rounded-full shrink-0"
+                    style={{ backgroundColor: "var(--brand-light-pink)" }}
+                  />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>
