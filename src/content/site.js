@@ -6,10 +6,30 @@ export const siteContent = {
   email: "contato@teacherjade.com",
   phoneDisplay: "(19) 99160-6984",
   phoneDigits: "5519991606984",
+  linkedinUrl:
+    "https://www.linkedin.com/in/jade-fernandes-da-silva-47bb83112/",
+  instagramUrl:
+    "https://www.instagram.com/jade_lfernandes?igsh=MXZxY241dTA0ZmlqYQ==",
+  triageFormUrl: "https://forms.gle/ptq6bx4xpy6jQKdf7",
   defaultMessage: "Olá! Quero saber mais sobre as aulas.",
   primaryCtaLabel: "Começar agora",
   primaryCtaMessage: "Olá! Quero começar as aulas.",
 };
+
+export const contactLinks = [
+  {
+    label: "LinkedIn",
+    href: siteContent.linkedinUrl,
+  },
+  {
+    label: "Instagram",
+    href: siteContent.instagramUrl,
+  },
+  {
+    label: "Formulário de triagem",
+    href: siteContent.triageFormUrl,
+  },
+];
 
 export function getWhatsAppUrl(
   message = siteContent.defaultMessage,
