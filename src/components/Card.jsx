@@ -1,4 +1,4 @@
-import { getWhatsAppUrl, plans } from "../content/site";
+import { getWhatsAppUrl, plans, siteContent } from "../content/site";
 
 export default function Card() {
   // separa planos de 1x por semana (packageOneClass) e 2x por semana (packageTwoClasses)
@@ -138,6 +138,19 @@ export default function Card() {
         <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {renderCards(planos2x)}
         </div>
+
+        <a
+          href={siteContent.triageFormUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-12 inline-flex items-center justify-center rounded-full px-6 py-3 font-semibold transition hover:scale-105"
+          style={{
+            backgroundColor: "var(--brand-primary)",
+            color: "#fff",
+          }}
+        >
+          Preencher formulário de triagem
+        </a>
       </div>
     </section>
   );

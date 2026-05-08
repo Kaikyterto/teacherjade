@@ -1,4 +1,38 @@
-import { getWhatsAppUrl } from "../content/site";
+import { contactLinks, getWhatsAppUrl, siteContent } from "../content/site";
+
+function SocialIcon({ label }) {
+  if (label === "LinkedIn") {
+    return (
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        className="h-4 w-4"
+        fill="currentColor"
+      >
+        <path d="M4.98 3.5C4.98 4.88 3.89 6 2.48 6S0 4.88 0 3.5 1.09 1 2.48 1s2.5 1.12 2.5 2.5ZM.23 8.49h4.5V23h-4.5V8.49ZM8.24 8.49h4.31v1.98h.06c.6-1.13 2.06-2.32 4.24-2.32 4.54 0 5.38 2.99 5.38 6.88V23h-4.49v-7.98c0-1.9-.03-4.34-2.64-4.34-2.64 0-3.05 2.06-3.05 4.2V23H8.24V8.49Z" />
+      </svg>
+    );
+  }
+
+  if (label === "Instagram") {
+    return (
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        className="h-4 w-4"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      >
+        <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
+        <circle cx="12" cy="12" r="4" />
+        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+      </svg>
+    );
+  }
+
+  return null;
+}
 
 export default function Hero() {
   const scheduleLink = getWhatsAppUrl("Olá! Quero agendar uma conversa.");
@@ -40,6 +74,27 @@ export default function Hero() {
       <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-12 px-6 md:grid-cols-2">
         {/* TEXTO */}
         <div>
+          <div className="flex items-center gap-2 text-sm font-medium text-zinc-500">
+            <span>Me acompanhe</span>
+            <div className="flex items-center gap-2">
+              {contactLinks
+                .filter((link) => link.label !== "Formulário de triagem")
+                .map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-zinc-200 bg-white text-zinc-600 transition hover:-translate-y-0.5 hover:border-rose-300 hover:text-rose-600"
+                    aria-label={link.label}
+                    title={link.label}
+                  >
+                    <SocialIcon label={link.label} />
+                  </a>
+                ))}
+            </div>
+          </div>
+
           <h1
             className="mt-6 text-4xl font-extrabold leading-tight md:text-5xl"
             style={{
@@ -72,6 +127,19 @@ export default function Hero() {
               }
             >
               Agendar conversa
+            </a>
+
+            <a
+              href={siteContent.triageFormUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full px-6 py-3 font-semibold transition hover:scale-105"
+              style={{
+                border: "2px solid var(--brand-primary)",
+                color: "var(--brand-primary)",
+              }}
+            >
+              Fale sobre você
             </a>
 
             {/* BOTÃO SECUNDÁRIO */}
