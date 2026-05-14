@@ -26,7 +26,7 @@ export const contactLinks = [
     href: siteContent.instagramUrl,
   },
   {
-    label: "Formulário de triagem",
+    label: "Fazer matrícula",
     href: siteContent.triageFormUrl,
   },
 ];

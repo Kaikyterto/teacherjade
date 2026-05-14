@@ -1,3 +1,4 @@
+import fundoImage from "../assets/fundo.jpg";
 import { contactLinks, getWhatsAppUrl, siteContent } from "../content/site";
 
 function SocialIcon({ label }) {
@@ -36,14 +37,38 @@ function SocialIcon({ label }) {
 
 export default function Hero() {
   const scheduleLink = getWhatsAppUrl("Olá! Quero agendar uma conversa.");
+  const openClasses = [
+    {
+      schedule: "Segunda feira às 18h:",
+      level: "Pré-intermediário",
+      seats: "3 vagas",
+    },
+    {
+      schedule: "Segunda feira às 20h:",
+      level: "Iniciante",
+      seats: "Última vaga",
+    },
+    {
+      schedule: "Quinta feira às 18h:",
+      level: "Teens (iniciante)",
+      seats: "Duas vagas",
+    },
+    {
+      schedule: "Quinta feira às 19h:",
+      level: "Iniciante",
+      seats: "Turma nova!",
+    },
+  ];
 
   return (
     <section
       id="hero"
       className="relative overflow-hidden py-24"
       style={{
-        background:
-          "radial-gradient(circle at 20% 0%, #fff1f2 0%, #fffdf8 40%, #ffffff 100%)",
+        backgroundImage: `linear-gradient(rgba(1, 17, 57, 0.66), rgba(1, 17, 57, 0.66)), radial-gradient(circle at 20% 0%, rgba(255, 241, 242, 0.28) 0%, rgba(255, 253, 248, 0.16) 40%, rgba(255, 255, 255, 0.04) 100%), url(${fundoImage})`,
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
       }}
     >
       {/* ELEMENTOS VISUAIS DE FUNDO (SVG) */}
@@ -51,8 +76,9 @@ export default function Hero() {
         className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
         aria-hidden="true"
       >
+        <div className="absolute inset-0 bg-[#011139]/18" />
         <svg
-          className="absolute -top-[10%] -right-[5%] w-[50%] h-[120%] opacity-20"
+          className="absolute -top-[10%] -right-[5%] h-[120%] w-[50%] opacity-10"
           viewBox="0 0 400 400"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +92,7 @@ export default function Hero() {
 
         {/* Outra "bola" no canto inferior esquerdo para equilíbrio */}
         <div
-          className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full blur-3xl opacity-10"
+          className="absolute -bottom-20 -left-20 h-64 w-64 rounded-full blur-3xl opacity-10"
           style={{ backgroundColor: "var(--brand-primary)" }}
         />
       </div>
@@ -74,18 +100,21 @@ export default function Hero() {
       <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-12 px-6 md:grid-cols-2">
         {/* TEXTO */}
         <div>
-          <div className="flex items-center gap-2 text-sm font-medium text-zinc-500">
+          <div className="flex items-center gap-2 text-sm font-medium text-white/85">
             <span>Me acompanhe</span>
             <div className="flex items-center gap-2">
               {contactLinks
-                .filter((link) => link.label !== "Formulário de triagem")
+                .filter(
+                  (link) =>
+                    link.label === "LinkedIn" || link.label === "Instagram"
+                )
                 .map((link) => (
                   <a
                     key={link.label}
                     href={link.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-zinc-200 bg-white text-zinc-600 transition hover:-translate-y-0.5 hover:border-rose-300 hover:text-rose-600"
+                    className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/35 bg-white/10 text-white transition hover:-translate-y-0.5 hover:border-white/60 hover:bg-white/20 hover:text-white"
                     aria-label={link.label}
                     title={link.label}
                   >
@@ -96,15 +125,18 @@ export default function Hero() {
           </div>
 
           <h1
-            className="mt-6 text-4xl font-extrabold leading-tight md:text-5xl"
+            className="mt-6 text-4xl font-extrabold leading-tight text-white md:text-5xl"
             style={{
-              color: "var(--brand-primary)",
+              textShadow: "0 2px 18px rgba(1, 17, 57, 0.45)",
             }}
           >
             Domine o inglês em 2026 com método prático e acompanhamento real
           </h1>
 
-          <p className="mt-6 text-lg" style={{ color: "var(--brand-ink)" }}>
+          <p
+            className="mt-6 text-lg text-white/90"
+            style={{ textShadow: "0 2px 12px rgba(1, 17, 57, 0.35)" }}
+          >
             Aulas particulares e em dupla com foco em conversa real, feedback
             prático, correção estratégica e evolução visível semana a semana.
           </p>
@@ -135,11 +167,12 @@ export default function Hero() {
               rel="noreferrer"
               className="rounded-full px-6 py-3 font-semibold transition hover:scale-105"
               style={{
-                border: "2px solid var(--brand-primary)",
+                backgroundColor: "rgba(255, 255, 255, 0.92)",
+                border: "2px solid rgba(255, 255, 255, 0.95)",
                 color: "var(--brand-primary)",
               }}
             >
-              Fale sobre você
+              Matricule-se
             </a>
 
             {/* BOTÃO SECUNDÁRIO */}
@@ -158,64 +191,32 @@ export default function Hero() {
 
         {/* CARD */}
 
-        <div className="flex flex-col ">
+        <div className="flex flex-col">
           <div
-            className="z-20 rounded-3xl p-8 shadow-xl mb-3 space-y-4"
-            style={{
-              backgroundColor: "rgba(255, 255, 255, 0.9)", // Leve transparência para o vidro
-              backdropFilter: "blur(10px)",
-              border: "2px solid var(--brand-light-pink)",
-            }}
+            className="relative z-20 mb-3 max-w-85 rounded-[28px] p-2"
+            style={{ marginLeft: "auto" }}
           >
-            <h1
-              className="text-xl font-extrabold p-auto"
-              style={{
-                color: "var(--brand-primary)",
-              }}
-            >
+            <h2 className="attention-zoom relative text-left text-2xl font-extrabold tracking-tight text-[#f7efc7] drop-shadow-[0_2px_10px_rgba(1,17,57,0.8)]">
               Vagas abertas
-            </h1>
-            <p>
-              Turma beginner: aprenda inglês do zero Início dia 21 de maio 3
-              vagas disponíveis Aulas às quintas-feiras às 19h
-            </p>
-          </div>
-          <div
-            className="relative z-10 rounded-3xl p-8 shadow-xl"
-            style={{
-              backgroundColor: "rgba(255, 255, 255, 0.9)", // Leve transparência para o vidro
-              backdropFilter: "blur(10px)",
-              border: "1px solid #f3f4f6",
-            }}
-          >
-            <h2
-              className="text-xl font-bold"
-              style={{ color: "var(--brand-primary)" }}
-            >
-              Método direto ao ponto
             </h2>
 
-            <ul className="mt-6 space-y-4">
-              {[
-                "1 aula de diagnóstico e trilha personalizada.",
-                "Prática de fala desde a primeira semana.",
-                "Material adaptado ao seu objetivo real.",
-                "Correção com foco em fluidez e confiança.",
-              ].map((item, index) => (
-                <li
-                  key={index}
-                  className="flex items-start gap-3"
-                  style={{ color: "var(--brand-ink)" }}
-                >
-                  <span
-                    className="mt-1 h-2 w-2 rounded-full shrink-0"
-                    style={{ backgroundColor: "var(--brand-light-pink)" }}
-                  />
-                  {item}
-                </li>
+            <div className="relative mt-6 space-y-4 text-[#f7efc7] drop-shadow-[0_2px_8px_rgba(1,17,57,0.85)]">
+              {openClasses.map((item) => (
+                <div key={item.schedule} className="space-y-0.5">
+                  <p className="inline-block rounded-full border-2 border-(--brand-light-pink) bg-(--brand-primary) px-3 py-1.5 text-lg font-extrabold leading-tight text-white shadow-[0_6px_16px_rgba(251,99,118,0.28)] ring-1 ring-[rgba(1,17,57,0.22)]">
+                    {item.schedule}
+                  </p>
+                  <p className="inline-block rounded-full border-2 border-(--brand-light-pink) bg-(--brand-primary) px-3 py-1.5 text-lg font-extrabold leading-tight text-white shadow-[0_6px_16px_rgba(251,99,118,0.28)] ring-1 ring-[rgba(1,17,57,0.22)]">
+                    {item.level}
+                  </p>
+                  <p className="inline-block rounded-full border-2 border-(--brand-light-pink) bg-(--brand-primary) px-3 py-1.5 text-lg font-semibold leading-tight text-white shadow-[0_6px_16px_rgba(251,99,118,0.28)] ring-1 ring-[rgba(1,17,57,0.22)]">
+                    {item.seats}
+                  </p>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
+          {/* Card moved to WhyChoose for better section alignment */}
         </div>
       </div>
     </section>
