@@ -42,3 +42,20 @@ a {
 .btn-primary:hover {
   background-color: var(--brand-light-pink);
 }
+
+.attention-zoom {
+  animation: attention-zoom 3.8s ease-in-out infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes attention-zoom {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.03);
+  }
+}
